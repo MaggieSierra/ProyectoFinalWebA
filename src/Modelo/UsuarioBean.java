@@ -9,6 +9,8 @@ public class UsuarioBean{
 	private String nombre;
 	private String primer_apellido;
 	private String segundo_apellido;
+	private String correo;
+	private String telefono;
 	private String usuario;
 	private String contraseña;
 	private int hrs_trabajo;
@@ -77,6 +79,22 @@ public class UsuarioBean{
 		this.segundo_apellido = segundo_apellido;
 	}
 	
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

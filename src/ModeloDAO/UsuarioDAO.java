@@ -60,18 +60,22 @@ public class UsuarioDAO {
 
 		try {
 			Connection con = Conexion.getConnection();
-			PreparedStatement ps = con.prepareStatement("select id_usuario, id_rol, clave_usuario, prefijo, nombre, primer_apellido, segundo_apellido, hrs_trabajo from usuarios where id_usuario = ?");
+			PreparedStatement ps = con.prepareStatement("select id_usuario, id_rol, id_departamento, clave_usuario, prefijo, nombre, "
+					+ "primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo from usuarios where id_usuario = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				u.setId_usuario(rs.getInt(1));
 				u.setId_rol(rs.getInt(2));
-				u.setClave_usuario(rs.getString(3));
-				u.setPrefijo(rs.getString(4));
-				u.setNombre(rs.getString(5));
-				u.setPrimer_apellido(rs.getString(6));
-				u.setSegundo_apellido(rs.getString(7));
-				u.setHrs_trabajo(rs.getInt(8));
+				u.setId_departamento(rs.getInt(3));
+				u.setClave_usuario(rs.getString(4));
+				u.setPrefijo(rs.getString(5));
+				u.setNombre(rs.getString(6));
+				u.setPrimer_apellido(rs.getString(7));
+				u.setSegundo_apellido(rs.getString(8));
+				u.setCorreo(rs.getString(9));
+				u.setTelefono(rs.getString(10));
+				u.setHrs_trabajo(rs.getInt(11));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
