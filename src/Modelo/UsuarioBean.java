@@ -14,6 +14,8 @@ public class UsuarioBean{
 	private String usuario;
 	private String contraseña;
 	private int hrs_trabajo;
+	private String nombre_rol;
+	private String nombre_departamento;
 	
 	public int getId_usuario() {
 		return id_usuario;
@@ -118,4 +120,21 @@ public class UsuarioBean{
 	public void setHrs_trabajo(int hrs_trabajo) {
 		this.hrs_trabajo = hrs_trabajo;
 	}
+
+	public String getNombre_rol() {
+		return nombre_rol;
+	}
+
+	public void setNombre_rol(String nombre_rol) {
+		this.nombre_rol = nombre_rol;
+	}
+
+	public String getNombre_departamento() {
+		return nombre_departamento;
+	}
+
+	public void setNombre_departamento(String nombre_departamento) {
+		this.nombre_departamento = nombre_departamento;
+	}
+	
 }

@@ -22,13 +22,13 @@
 	%>
 		<ul class='nav nav-tabs'>
 			<li class='nav-item'><a class='nav-link' href='index.jsp'>Inicio</a></li>
-			<%if (user != null && rol == 1) {%>
+			<%if (user != null && rol == 3) {%>
+				<li class="nav-item"><a class="nav-link" href="reporte_maestro.jsp">Reporte</a></li>
+			<%}else if (user != null && rol == 2) {%>
 				<li class="nav-item"><a class="nav-link" href="materias.jsp">Materias</a></li>
 				<li class="nav-item"><a class="nav-link" href="sabana.jsp">Sabana de Materias</a></li>
 				<li class="nav-item"><a class="nav-link" href="reportes.jsp">Reportes de Docentes</a></li>
-			<%} else if (user != null && rol == 2) {%>
-				<li class="nav-item"><a class="nav-link" href="reporte_maestro.jsp">Reporte</a></li>
-			<%}else if(user != null && rol == 3){%>
+			<%} else if(user != null && rol == 1){%>
 				<li class="nav-item"><a class="nav-link" href="carreras.jsp">Carreras</a></li>
 				<li class="nav-item"><a class="nav-link" href="profesores.jsp">Profesores</a></li>
 			<%}%>

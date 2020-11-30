@@ -89,18 +89,26 @@ public class UsuarioDAO {
 
 		try {
 			Connection con = Conexion.getConnection();
-			PreparedStatement ps = con.prepareStatement("select id_usuario, id_rol, clave_usuario, prefijo, nombre, primer_apellido, segundo_apellido, hrs_trabajo from usuarios");
+			PreparedStatement ps = con.prepareStatement("SELECT  id_usuario, usuarios.id_rol, usuarios.id_departamento, clave_usuario, prefijo, nombre," + 
+					" primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo, nombre_departamento, nombre_rol FROM usuarios"
+					+ " INNER JOIN departamentos ON usuarios.id_departamento = departamentos.id_departamento "
+					+ " INNER JOIN roles ON usuarios.id_rol = roles.id_rol");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				UsuarioBean u = new UsuarioBean();
 				u.setId_usuario(rs.getInt(1));
 				u.setId_rol(rs.getInt(2));
-				u.setClave_usuario(rs.getString(3));
-				u.setPrefijo(rs.getString(4));
-				u.setNombre(rs.getString(5));
-				u.setPrimer_apellido(rs.getString(6));
-				u.setSegundo_apellido(rs.getString(7));
-				u.setHrs_trabajo(rs.getInt(8));
+				u.setId_departamento(rs.getInt(3));
+				u.setClave_usuario(rs.getString(4));
+				u.setPrefijo(rs.getString(5));
+				u.setNombre(rs.getString(6));
+				u.setPrimer_apellido(rs.getString(7));
+				u.setSegundo_apellido(rs.getString(8));
+				u.setCorreo(rs.getString(9));
+				u.setTelefono(rs.getString(10));
+				u.setHrs_trabajo(rs.getInt(11));
+				u.setNombre_departamento(rs.getString(12));
+				u.setNombre_rol(rs.getString(13));
 				list.add(u);
 			}
 		} catch (Exception e) {
