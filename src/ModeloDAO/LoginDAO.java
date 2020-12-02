@@ -13,7 +13,7 @@ public class LoginDAO {
 	public static boolean validar(String user, String pass) {
 		
 		boolean status = false;
-		String sql = "select * from usuario where usuario=? and contrasena=?";
+		String sql = "select * from usuario where usuario = ? and contrasena=?";
 		
 		try {
 			Connection con = Conexion.getConnection();

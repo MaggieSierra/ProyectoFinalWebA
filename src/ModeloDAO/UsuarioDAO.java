@@ -15,7 +15,7 @@ public class UsuarioDAO {
 		try{  
 			Connection con = Conexion.getConnection();;  
 		              
-			PreparedStatement ps=con.prepareStatement("select * from usuarios where usuario = ? and contraseña = ?");  
+			PreparedStatement ps=con.prepareStatement("select * from usuario where usuario = ? and contraseña = ?");  
 			ps.setString(1,bean.getUsuario());  
 			ps.setString(2, bean.getContraseña());  
 		              
@@ -30,7 +30,7 @@ public class UsuarioDAO {
 	
 	public static UsuarioBean getUsuario(UsuarioBean bean) {
 		UsuarioBean user = new UsuarioBean();
-		String sql = "select id_usuario, id_rol, prefijo, nombre, primer_apellido, segundo_apellido, usuario from usuarios where usuario=? and contraseña=?";		
+		String sql = "select id_usuario, id_rol, prefijo, nombre, primer_apellido, segundo_apellido, usuario from usuario where usuario=? and contraseña=?";		
 		
 		try {
 			Connection con = Conexion.getConnection();
@@ -61,7 +61,7 @@ public class UsuarioDAO {
 		try {
 			Connection con = Conexion.getConnection();
 			PreparedStatement ps = con.prepareStatement("select id_usuario, id_rol, id_departamento, clave_usuario, prefijo, nombre, "
-					+ "primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo from usuarios where id_usuario = ?");
+					+ "primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo from usuario where id_usuario = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
@@ -90,7 +90,7 @@ public class UsuarioDAO {
 		try {
 			Connection con = Conexion.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT  id_usuario, usuarios.id_rol, usuarios.id_departamento, clave_usuario, prefijo, nombre," + 
-					" primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo, nombre_departamento, nombre_rol FROM usuarios"
+					" primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo, nombre_departamento, nombre_rol FROM usuario"
 					+ " INNER JOIN departamentos ON usuarios.id_departamento = departamentos.id_departamento "
 					+ " INNER JOIN roles ON usuarios.id_rol = roles.id_rol");
 			ResultSet rs = ps.executeQuery();

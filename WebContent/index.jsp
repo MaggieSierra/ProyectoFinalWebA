@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Inicio-TECNM</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="vistas/assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 	<%	HttpSession session_user=request.getSession();    
@@ -25,7 +25,7 @@
 		<br>
 		<div class="col-12" style="text-align: center;">
 			<h2>Bienvenido ${nombre}</h2>
-			<img src="vistas/assets/img/logo_tec.png">
+			<img src="assets/img/logo_tec.png">
 		</div>
 		
 	</div>

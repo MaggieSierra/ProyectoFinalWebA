@@ -2,11 +2,10 @@ package Modelo;
 
 public class CarreraBean {
 	private int id_carrera;
-	private int id_departamento;
+	private int id_turno;
 	private String clave_carrera;
 	private String nombre;
 	private String turno;
-	private String nombre_departamento;
 	
 	public int getId_carrera() {
 		return id_carrera;
@@ -32,12 +31,12 @@ public class CarreraBean {
 		this.nombre = nombre;
 	}
 
-	public int getId_departamento() {
-		return id_departamento;
+	public int getIdTurno() {
+		return id_turno;
 	}
 
-	public void setId_departamento(int id_departamento) {
-		this.id_departamento = id_departamento;
+	public void setIdTurno(int id_turno) {
+		this.id_turno = id_turno;
 	}
 
 	public String getTurno() {
@@ -47,15 +46,5 @@ public class CarreraBean {
 	public void setTurno(String turno) {
 		this.turno = turno;
 	}
-
-	public String getNombre_departamento() {
-		return nombre_departamento;
-	}
-
-	public void setNombre_departamento(String nombre_departamento) {
-		this.nombre_departamento = nombre_departamento;
-	}
-	
-	
 	
 }

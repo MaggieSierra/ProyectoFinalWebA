@@ -14,7 +14,7 @@ public class DepartamentoDAO {
 
 		try {
 			Connection con = Conexion.getConnection();
-			PreparedStatement ps = con.prepareStatement("select id_departamento, nombre_departamento from departamentos where id_departamento = ?");
+			PreparedStatement ps = con.prepareStatement("select id_departamento, nombre_departamento from departamento where id_departamento = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {

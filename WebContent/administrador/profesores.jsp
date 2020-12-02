@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profesores - Tecnm</title>
+<title>Docentes - Tecnm</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 	<%	HttpSession session_user=request.getSession();    
@@ -34,12 +34,12 @@
 		
 	%>
 	<div class="container">
-		<jsp:include page="menu.jsp" />
+		<jsp:include page="../menu.jsp" />
 		<br>
 		<div class='navbar'>
-			<h2>Lista de Profesores</h2>
+			<h2>Lista de Docentes</h2>
 			<button class='btn btn-success' style='margin-right:10px;'>
-					<a style="text-decoration: none; color:white;" href="#">Nuevo profesor</a>
+					<a style="text-decoration: none; color:white;" href="#">Nuevo Docente</a>
 			</button>
 	        <form class='form-inline' action='materias.jsp' method='get'> 
 	        	<input type='search' name='txtBuscar' class='form-control' style='margin-right:15px;' autocomplete="off"> 
@@ -55,6 +55,7 @@
 				<th>Telefono</th>
 	            <th>Departamento</th>
 	            <th>Rol</th>
+	            <th></th>
 	         </tr>
          </thead>
          <tbody>

@@ -8,7 +8,7 @@ public class Conexion {
 	private static Connection connection;
 	
 	private Conexion() {
-		String db_url = "jdbc:mysql://localhost:3306/proyecto_tec?useSSL=false";
+		String db_url = "jdbc:mysql://localhost:3306/proyecto_tec_mvc?useSSL=false";
         String db_driver = "com.mysql.cj.jdbc.Driver";
         String db_user = "root";
         String db_password = "";

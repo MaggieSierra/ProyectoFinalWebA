@@ -143,3 +143,6 @@ VALUES	('Ciencias Basicas'),
 INSERT INTO turno (turno)
 VALUES	('Matutino'),
 		('Vespertino');
+		
+INSERT INTO usuario (id_rol, id_departamento, clave_usuario, prefijo, nombre, primer_apellido, segundo_apellido, usuario, contraseña, correo, telefono, hrs_trabajo)
+values(1, 1, 'A01', 'ING.', 'ANTONIO', 'AGUILA', 'REYES', 'aaguila01', '123', 'antonio.aguila@leon.tecnm.mx', '4771234567', 5);
