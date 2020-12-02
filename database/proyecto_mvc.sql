@@ -4,8 +4,8 @@ CREATE DATABASE proyecto_tec_mvc;
 USE proyecto_tec_mvc;
 
 -- ------------------------------------------------------
-------Estructura para la tabla `rol`----------
----------------------------------------------------------
+-- ----Estructura para la tabla `rol`----------
+-- -------------------------------------------------------
 
 CREATE TABLE rol (
   id_rol INT NOT NULL AUTO_INCREMENT,
@@ -15,8 +15,8 @@ CREATE TABLE rol (
 );
 
 -- ------------------------------------------------------
---_Estructura para la tabla `departamento`-----
----------------------------------------------------------
+-- Estructura para la tabla `departamento`-----
+-- -------------------------------------------------------
 
 CREATE TABLE departamento (
   id_departamento INT NOT NULL AUTO_INCREMENT,
@@ -26,12 +26,12 @@ CREATE TABLE departamento (
 );
 
 -- ------------------------------------------------------
---_Estructura para la tabla `turno`
----------------------------------------------------------
+-- Estructura para la tabla `turno`
+-- -------------------------------------------------------
 
 CREATE TABLE turno (
   id_turno INT NOT NULL AUTO_INCREMENT,
-  turno VARCHAR(255) NOT NULL, 			--(Matutivo, Vespertino)
+  turno VARCHAR(255) NOT NULL, 			-- (Matutivo, Vespertino)
   
   PRIMARY KEY (id_turno)
 );
@@ -71,7 +71,7 @@ CREATE TABLE carrera (
   
   PRIMARY KEY (id_carrera),
   FOREIGN KEY (id_turno) REFERENCES turno (id_turno)
-) 
+);
 
 -- --------------------------------------------------------
 -- Estructura para la tabla `usuario_carrera`
@@ -108,12 +108,12 @@ CREATE TABLE materia (
 -- --------------------------------------------------------
 
 CREATE TABLE horario (
-  id_horario int(11) NOT NULL AUTO_INCREMENT,
-  id_usuario int(11) NOT NULL,
-  id_materia int(11) NOT NULL,
+  id_horario INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULL,
+  id_materia INT NOT NULL,
   periodo VARCHAR(255) NOT NULL,
   grupo VARCHAR(255) NOT NULL,
-  num_alumnos int(11) NOT NULL,
+  num_alumnos INT NOT NULL,
   aula VARCHAR(255) DEFAULT NULL,
   lunes VARCHAR(255) DEFAULT NULL,
   martes VARCHAR(255) DEFAULT NULL,
@@ -123,17 +123,17 @@ CREATE TABLE horario (
   
    PRIMARY KEY (id_horario),
    FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
-   FOREIGN KEY (id_materia) REFERENCES subject (id_materia)
+   FOREIGN KEY (id_materia) REFERENCES materia (id_materia)
 );
 -- ------------------
 -- -inserts-----
----------------------
+-- -------------------
 INSERT INTO rol (nombre_rol) 
 VALUES ('Administrador'), 
 		('Jefe Carrera'), 
 		('Docente');
 
-INSERT INTO departamento (departamento)
+INSERT INTO departamento (nombre_departamento)
 VALUES	('Ciencias Basicas'),
 		('Sistemas y Computación'),
 		('Metal Mecánica'),
