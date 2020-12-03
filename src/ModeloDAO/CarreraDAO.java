@@ -15,7 +15,7 @@ public class CarreraDAO {
 		int status = 0;
 		try {
 			Connection con = Conexion.getConnection();
-			PreparedStatement ps = con.prepareStatement("insert into carrera(clave_carrera, nombre, id_turno) values (?,?,?,?)");
+			PreparedStatement ps = con.prepareStatement("insert into carrera(clave_carrera, nombre, id_turno) values (?,?,?)");
 			ps.setString(1, bean.getClave_carrera());
 			ps.setString(2, bean.getNombre());
 			ps.setInt(3, bean.getIdTurno());

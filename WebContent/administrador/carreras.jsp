@@ -39,7 +39,7 @@
 		<div class='navbar'>
 			<h2>Lista de Carreras</h2>
 			<button class='btn btn-success' style='margin-right:10px;'>
-					<a style="text-decoration: none; color:white;" href="#">Nueva Carrera</a>
+					<a style="text-decoration: none; color:white;" href="crear_carrera.jsp">Nueva Carrera</a>
 			</button>
 	        <form class='form-inline' action='materias.jsp' method='get'> 
 	        	<input type='search' name='txtBuscar' class='form-control' style='margin-right:15px;' autocomplete="off"> 
@@ -52,7 +52,6 @@
 				<th>Clave Carrera</th>
 				<th>Nombre</th>
 				<th>Turno</th>
-				<th>Departamento</th>
 	            <th></th>
 	         </tr>
          </thead>
@@ -65,7 +64,6 @@
 				<td>${carrera.getClave_carrera()}</td>
 				<td>${carrera.getNombre()}</td>
 				<td>${carrera.getTurno()}</td>
-				<td>${carrera.getNombre_departamento()}</td>
 				<td><button class='btn btn-warning' style='margin-right:10px;'>
 						<a style='text-decoration: none; color:white;' href="editar_carrera.jsp?id=${carrera.getId_carrera()}">Editar</a>
 					</button>

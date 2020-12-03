@@ -9,4 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+   <servlet>  
+    <servlet-name>CrearCarreraServlet</servlet-name>  
+    <servlet-class>Controlador.CrearCarreraServlet</servlet-class>  
+  </servlet> 
+  <servlet-mapping>
+    <servlet-name>CrearCarreraServlet</servlet-name>
+    <url-pattern>/CrearCarreraServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
