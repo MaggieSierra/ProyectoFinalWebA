@@ -7,7 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Carreras - Tecnm</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 	<%	HttpSession session_user=request.getSession();    
@@ -27,7 +27,7 @@
 			
 	%>
 	<div class="container">
-		<jsp:include page="../menu2.jsp" />
+		<jsp:include page="menu.jsp" />
 		<br>
 		<h2>Agregar Carrera</h2>
 		<form action="../CrearCarreraServlet" method="post" style="margin-top:20px;">

@@ -57,7 +57,7 @@
          </thead>
          <tbody>
          <c:if test="${list.size() == 0}">
-			<tr><td colspan='7'>No se encontraron carreras</td></tr>
+			<tr><td colspan='9'>No se encontraron carreras</td></tr>
 		</c:if>
 		<c:forEach var="carrera" items="${list}">
 			<tr>
@@ -65,7 +65,7 @@
 				<td>${carrera.getNombre()}</td>
 				<td>${carrera.getTurno()}</td>
 				<td><button class='btn btn-warning' style='margin-right:10px;'>
-						<a style='text-decoration: none; color:white;' href="editar_carrera.jsp?id=${carrera.getId_carrera()}">Editar</a>
+						<a style='text-decoration: none; color:white;' href="asignar_docente.jsp?id=${carrera.getId_carrera()}">Editar</a>
 					</button>
 	             </td>
 			</tr>

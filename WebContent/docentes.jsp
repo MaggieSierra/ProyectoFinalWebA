@@ -7,7 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Docentes - Tecnm</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 	<%	HttpSession session_user=request.getSession();    
@@ -16,7 +16,6 @@
 			dispatcher.forward(request, response);
 		}else{
 		
-			String user = (String)session_user.getAttribute("usuario");
 			int rol = (int)session_user.getAttribute("rol");
 			if(rol != 1){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
@@ -39,7 +38,7 @@
 		<div class='navbar'>
 			<h2>Lista de Docentes</h2>
 			<button class='btn btn-success' style='margin-right:10px;'>
-					<a style="text-decoration: none; color:white;" href="#">Nuevo Docente</a>
+					<a style="text-decoration: none; color:white;" href="crear_docente.jsp">Nuevo Docente</a>
 			</button>
 	        <form class='form-inline' action='materias.jsp' method='get'> 
 	        	<input type='search' name='txtBuscar' class='form-control' style='margin-right:15px;' autocomplete="off"> 

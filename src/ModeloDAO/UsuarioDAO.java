@@ -4,7 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import Modelo.UsuarioBean;  
+import Modelo.CarreraBean;
+import Modelo.UsuarioBean;
 import Controlador.Conexion;
 
 public class UsuarioDAO {  
@@ -60,8 +61,10 @@ public class UsuarioDAO {
 
 		try {
 			Connection con = Conexion.getConnection();
-			PreparedStatement ps = con.prepareStatement("select id_usuario, id_rol, id_departamento, clave_usuario, prefijo, nombre, "
-					+ "primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo from usuario where id_usuario = ?");
+			PreparedStatement ps = con.prepareStatement("SELECT  id_usuario, usuario.id_rol, usuario.id_departamento, clave_usuario, prefijo, nombre," + 
+					" primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo, nombre_departamento, nombre_rol FROM usuario" + 
+					" INNER JOIN departamento ON usuario.id_departamento = departamento.id_departamento " + 
+					" INNER JOIN rol ON usuario.id_rol = rol.id_rol WHERE id_usuario = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
@@ -117,4 +120,64 @@ public class UsuarioDAO {
 
 		return list;
 	}
+	
+	public static List<UsuarioBean> searchUsuario(String texto) {
+		List<UsuarioBean> list = new ArrayList<UsuarioBean>();
+
+		try {
+			Connection con = Conexion.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT  id_usuario, usuarios.id_rol, usuarios.id_departamento, clave_usuario, prefijo, nombre," + 
+					" primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo, nombre_departamento, nombre_rol FROM usuario"
+					+ " INNER JOIN departamentos ON usuarios.id_departamento = departamentos.id_departamento "
+					+ " INNER JOIN roles ON usuarios.id_rol = roles.id_rol WHERE clave_usuario LIKE ? OR nombre LIKE ? ");
+			ps.setString(1, "%"+texto+"%");
+			ps.setString(2, "%"+texto+"%");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				UsuarioBean u = new UsuarioBean();
+				u.setId_usuario(rs.getInt(1));
+				u.setId_rol(rs.getInt(2));
+				u.setId_departamento(rs.getInt(3));
+				u.setClave_usuario(rs.getString(4));
+				u.setPrefijo(rs.getString(5));
+				u.setNombre(rs.getString(6));
+				u.setPrimer_apellido(rs.getString(7));
+				u.setSegundo_apellido(rs.getString(8));
+				u.setCorreo(rs.getString(9));
+				u.setTelefono(rs.getString(10));
+				u.setHrs_trabajo(rs.getInt(11));
+				u.setNombre_departamento(rs.getString(12));
+				u.setNombre_rol(rs.getString(13));
+				list.add(u);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	 public static List<CarreraBean> getCarrerasByIdUsuario(int id_usuario) {
+			List<CarreraBean> list = new ArrayList<CarreraBean>();
+			
+			try {
+				Connection con = Conexion.getConnection();
+				PreparedStatement ps = con.prepareStatement("SELECT carrera.id_carrera, carrera.nombre FROM usuario_carrera "
+						+ "INNER JOIN carrera ON carrera.id_carrera = usuario_carrera.id_carrera WHERE id_usuario = ? ");
+				ps.setInt(1, id_usuario);
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					CarreraBean bean = new CarreraBean();
+					bean.setId_carrera(rs.getInt(1));
+					bean.setNombre(rs.getString(2));
+					list.add(bean);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+
+			return list;
+		}
+	
 }  
