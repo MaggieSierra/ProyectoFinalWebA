@@ -259,5 +259,43 @@ public class UsuarioDAO {
 
 		return list;
 	}
+	 
+	 public static List<UsuarioBean> getAllUserByCarrera(String carrera_trabajar) {
+		List<UsuarioBean> list = new ArrayList<UsuarioBean>();
+		int id = Integer.parseInt(carrera_trabajar);
+		try {
+			Connection con = Conexion.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT  usuario.id_usuario, usuario.id_rol, usuario.id_departamento, clave_usuario, "
+					+ " prefijo, usuario.nombre, primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo, nombre_departamento, "
+					+ " nombre_rol FROM usuario"
+					+ " INNER JOIN departamento ON usuario.id_departamento = departamento.id_departamento "
+					+ " INNER JOIN rol ON usuario.id_rol = rol.id_rol "
+					+ " INNER JOIN usuario_carrera ON usuario_carrera.id_usuario = usuario.id_usuario "
+					+ " INNER JOIN carrera ON carrera.id_carrera = usuario_carrera.id_carrera WHERE carrera.id_carrera = ? ");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				UsuarioBean u = new UsuarioBean();
+				u.setId_usuario(rs.getInt(1));
+				u.setId_rol(rs.getInt(2));
+				u.setId_departamento(rs.getInt(3));
+				u.setClave_usuario(rs.getString(4));
+				u.setPrefijo(rs.getString(5));
+				u.setNombre(rs.getString(6));
+				u.setPrimer_apellido(rs.getString(7));
+				u.setSegundo_apellido(rs.getString(8));
+				u.setCorreo(rs.getString(9));
+				u.setTelefono(rs.getString(10));
+				u.setHrs_trabajo(rs.getInt(11));
+				u.setNombre_departamento(rs.getString(12));
+				u.setNombre_rol(rs.getString(13));
+				list.add(u);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 	
 }  

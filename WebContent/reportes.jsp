@@ -18,7 +18,7 @@
 		
 			String user = (String)session_user.getAttribute("usuario");
 			int rol = (int)session_user.getAttribute("rol");
-			if(rol != 1){
+			if(rol != 2){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 				dispatcher.forward(request, response);
 			}else{

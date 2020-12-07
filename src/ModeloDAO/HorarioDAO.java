@@ -15,21 +15,20 @@ public class HorarioDAO {
 		int status = 0;
 		try {
 			Connection con = Conexion.getConnection();
-			String sql = "insert into horarios(id_usuario, id_materia, id_carrera, periodo, grupo, num_alumnos, aula, lunes,"
-					+ "martes, miercoles, jueves, viernes) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into horarios(id_usuario, id_materia, periodo, grupo, num_alumnos, aula, lunes,"
+					+ "martes, miercoles, jueves, viernes) values (?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1,bean.getId_usuario());
 			ps.setInt(2, bean.getId_materia());
-			ps.setInt(3, bean.getId_carrera());
-			ps.setString(4, bean.getPeriodo());
-			ps.setString(5,bean.getGrupo());
-			ps.setInt(6,bean.getNum_alumnos());
-			ps.setString(7,bean.getAula());
-			ps.setString(8, bean.getLunes());
-			ps.setString(9,bean.getMartes());
-			ps.setString(10,bean.getMiercoles());
-			ps.setString(11,bean.getJueves());
-			ps.setString(12,bean.getViernes());
+			ps.setString(3, bean.getPeriodo());
+			ps.setString(4,bean.getGrupo());
+			ps.setInt(5,bean.getNum_alumnos());
+			ps.setString(6,bean.getAula());
+			ps.setString(7, bean.getLunes());
+			ps.setString(8,bean.getMartes());
+			ps.setString(9,bean.getMiercoles());
+			ps.setString(10,bean.getJueves());
+			ps.setString(11,bean.getViernes());
 
 			status = ps.executeUpdate();
 			
@@ -206,9 +205,11 @@ public class HorarioDAO {
 		try {
 			Connection con = Conexion.getConnection();
 			String sql = "SELECT horario.*, usuario.nombre, usuario.prefijo, usuario.primer_apellido, usuario.segundo_apellido,"
-					+ " materia.clave_materia,materia.nombre, materia.semestre, materia.hrs_teoria, materia.hrs_practica, materia.creditos,"
-					+ "carrera.clave_carrera,carrera.nombre, turno.turno FROM horario JOIN usuario ON usuario.id_usuario = horario.id_usuario "
-					+ "JOIN materia ON materia.id_materia = horario.id_materia JOIN carrera ON carrera.id_carrera = horario.id_carrera "
+					+ " materia.clave_materia, materia.nombre, materia.semestre, materia.hrs_teoria, materia.hrs_practica, materia.creditos,"
+					+ " carrera.clave_carrera, carrera.nombre, turno.turno FROM horario "
+					+ " JOIN usuario ON usuario.id_usuario = horario.id_usuario "
+					+ " JOIN materia ON materia.id_materia = horario.id_materia "
+					+ " JOIN carrera ON carrera.id_carrera = materia.id_carrera "
 					+ " JOIN turno ON carrera.id_turno = turno.id_turno WHERE horario.id_horario = ? ORDER BY id_horario;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
@@ -261,8 +262,10 @@ public class HorarioDAO {
 			Connection con = Conexion.getConnection();
 			String sql = "SELECT horario.*, usuario.nombre, usuario.prefijo, usuario.primer_apellido, usuario.segundo_apellido,"
 					+ " materia.clave_materia,materia.nombre, materia.semestre, materia.hrs_teoria, materia.hrs_practica, materia.creditos,"
-					+ "carrera.clave_carrera,carrera.nombre, turno.turno FROM horario JOIN usuario ON usuario.id_usuario = horario.id_usuario "
-					+ "JOIN materia ON materia.id_materia = horario.id_materia JOIN carrera ON carrera.id_carrera = horario.id_carrera "
+					+ "carrera.clave_carrera,carrera.nombre, turno.turno FROM horario "
+					+ "JOIN usuario ON usuario.id_usuario = horario.id_usuario "
+					+ "JOIN materia ON materia.id_materia = horario.id_materia "
+					+ "JOIN carrera ON carrera.id_carrera = materia.id_carrera "
 					+ "JOIN turno ON carrera.id_turno = turno.id_turno"
 					+ "WHERE horario.id_usuario = ? ORDER BY id_horario;";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -312,17 +315,20 @@ public class HorarioDAO {
 		return list;
 	}
 	
-	public static List<HorarioBean> getAllHorarios() {
-		
+	public static List<HorarioBean> getAllHorarios(String carrera_trabajar) {
+		int id = Integer.parseInt(carrera_trabajar);
 		List<HorarioBean> list = new ArrayList<HorarioBean>();
 		try {
 			Connection con = Conexion.getConnection();
 			String sql = "SELECT horario.*, usuario.nombre, usuario.prefijo, usuario.primer_apellido, usuario.segundo_apellido,"
 					+ " materia.clave_materia,materia.nombre, materia.semestre, materia.hrs_teoria, materia.hrs_practica, materia.creditos,"
-					+ "carrera.clave_carrera,carrera.nombre, turno.turno FROM horario JOIN usuario ON usuario.id_usuario = horario.id_usuario "
-					+ "JOIN materia ON materia.id_materia = horario.id_materia JOIN carrera ON carrera.id_carrera = horario.id_carrera "
-					+ " JOIN turno ON carrera.id_turno = turno.id_turno ORDER BY id_horario;";
+					+ "carrera.clave_carrera, carrera.nombre, turno.turno FROM horario "
+					+ "JOIN usuario ON usuario.id_usuario = horario.id_usuario "
+					+ "JOIN materia ON materia.id_materia = horario.id_materia "
+					+ "JOIN carrera ON carrera.id_carrera = materia.id_carrera "
+					+ " JOIN turno ON carrera.id_turno = turno.id_turno WHERE materia.id_carrera = ? ORDER BY id_horario;";
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				HorarioBean h = new HorarioBean();
@@ -368,18 +374,20 @@ public class HorarioDAO {
 		return list;
 	}
 	
-	public static List<HorarioBean> searchHorario(String texto) {
+	public static List<HorarioBean> searchHorario(String texto, String carrera_trabajar) {
 		List<HorarioBean> list = new ArrayList<HorarioBean>();
-		
+		int id = Integer.parseInt(carrera_trabajar);
 		try {
 			Connection con = Conexion.getConnection();
 			String sql = "SELECT horario.*, usuario.nombre, usuario.prefijo, usuario.primer_apellido, usuario.segundo_apellido,"
 					+ " materia.clave_materia,materia.nombre, materia.semestre, materia.hrs_teoria, materia.hrs_practica, materia.creditos,"
-					+ "carrera.clave_carrera,carrera.nombre, turno.turno FROM horario JOIN usuario ON usuario.id_usuario = horario.id_usuario "
-					+ "JOIN materia ON materia.id_materia = horario.id_materia JOIN carrera ON carrera.id_carrera = horario.id_carrera "
-					+ "WHERE horario.id_horario like ? OR materia.clave_materia like ? OR materia.nombre like ? OR usuario.nombre like ? ORDER BY id_horario;";
+					+ "carrera.clave_carrera, carrera.nombre, turno.turno FROM horario "
+					+ "JOIN usuario ON usuario.id_usuario = horario.id_usuario "
+					+ "JOIN materia ON materia.id_materia = horario.id_materia "
+					+ "JOIN carrera ON carrera.id_carrera = materia.id_carrera "
+					+ "WHERE carrera.id_carrera = ? AND materia.clave_materia like ? OR materia.nombre like ? OR usuario.nombre like ? ORDER BY id_horario;";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, "%"+texto+"%");
+			ps.setInt(1, id);
 			ps.setString(2, "%"+texto+"%");
 			ps.setString(3, "%"+texto+"%");
 			ps.setString(4, "%"+texto+"%");

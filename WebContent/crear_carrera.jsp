@@ -30,7 +30,7 @@
 		<jsp:include page="menu.jsp" />
 		<br>
 		<h2>Agregar Carrera</h2>
-		<form action="../CrearCarreraServlet" method="post" style="margin-top:20px;">
+		<form action="CrearCarreraServlet" method="post" style="margin-top:20px;">
 			<table>
 				<tr>
 					<td>Clave Carrera:</td>
