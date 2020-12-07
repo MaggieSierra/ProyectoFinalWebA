@@ -29,8 +29,9 @@
 				<li class="nav-item"><a class="nav-link" href="sabana.jsp">Sabana de Materias</a></li>
 				<li class="nav-item"><a class="nav-link" href="reportes.jsp">Reportes de Docentes</a></li>
 			<%} else if(user != null && rol == 1){%>
-				<li class="nav-item"><a class="nav-link" href="administrador/carreras.jsp">Carreras</a></li>
-				<li class="nav-item"><a class="nav-link" href="profesores.jsp">Profesores</a></li>
+				<li class="nav-item"><a class="nav-link" href="carreras.jsp">Carreras</a></li>
+				<li class="nav-item"><a class="nav-link" href="docentes.jsp">Docentes</a></li>
+				<li class="nav-item"><a class="nav-link" href="jefes.jsp">Jefes Carrera</a></li>
 			<%}%>
 			<li class="nav-item"><a class="nav-link" href="perfil.jsp">Mi Perfil</a></li>
 			<li class="nav-item"><a class="nav-link" href="LogoutServlet">Cerrar Sesion</a></li>

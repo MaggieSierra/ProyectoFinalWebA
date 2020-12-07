@@ -74,7 +74,7 @@ CREATE TABLE carrera (
 );
 
 -- --------------------------------------------------------
--- Estructura para la tabla `usuario_carrera`
+-- Estructura para la tabla `usuario_carrera` **asignar profesores a una carrera**
 -- --------------------------------------------------------
 CREATE TABLE usuario_carrera (
     id_usuario_carrera INT NOT NULL AUTO_INCREMENT,
@@ -85,6 +85,20 @@ CREATE TABLE usuario_carrera (
     FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
     FOREIGN KEY (id_carrera) REFERENCES carrera (id_carrera)
 );
+
+-- --------------------------------------------------------
+-- Estructura para la tabla `jefe_carrera` **asignar jefes de carrera**
+-- --------------------------------------------------------
+CREATE TABLE jefe_carrera (
+    id_jefe_carrera INT NOT NULL AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    id_carrera INT NOT NULL,
+
+    PRIMARY KEY (id_jefe_carrera),
+    FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
+    FOREIGN KEY (id_carrera) REFERENCES carrera (id_carrera)
+);
+
 
 -- --------------------------------------------------------
 -- Estructura para la tabla `materia`

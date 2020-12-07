@@ -4,6 +4,7 @@ public class UsuarioBean{
 	private int id_usuario;
 	private int id_rol;
 	private int id_departamento;
+	private int id_carrera;
 	private String clave_usuario;
 	private String prefijo;
 	private String nombre;
@@ -16,6 +17,8 @@ public class UsuarioBean{
 	private int hrs_trabajo;
 	private String nombre_rol;
 	private String nombre_departamento;
+	private String nombre_carrera;
+	private int id_jefe;
 	
 	public int getId_usuario() {
 		return id_usuario;
@@ -135,6 +138,30 @@ public class UsuarioBean{
 
 	public void setNombre_departamento(String nombre_departamento) {
 		this.nombre_departamento = nombre_departamento;
+	}
+
+	public int getId_carrera() {
+		return id_carrera;
+	}
+
+	public void setId_carrera(int id_carrera) {
+		this.id_carrera = id_carrera;
+	}
+
+	public String getNombre_carrera() {
+		return nombre_carrera;
+	}
+
+	public void setNombre_carrera(String nombre_carrera) {
+		this.nombre_carrera = nombre_carrera;
+	}
+
+	public int getId_jefe() {
+		return id_jefe;
+	}
+
+	public void setId_jefe(int id_jefe) {
+		this.id_jefe = id_jefe;
 	}
 	
 }

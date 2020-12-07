@@ -37,8 +37,6 @@ public class DeleteMateriaServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
 			dispatcher.forward(request, response);
 		}else{
-		
-			String user = (String)session_user.getAttribute("usuario");
 			int rol = (int)session_user.getAttribute("rol");
 			if(rol != 2){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");

@@ -30,12 +30,21 @@
 	<div class="container">
 		<jsp:include page="menu.jsp" />
 		<br>
+		<div class="custom-file col-12">
+			<form name="formFile" action="SubirArchivoServlet" method="post" enctype="multipart/form-data">
+				<label>**Nota: Seleccione un archivo con extensión .csv para subir materias nuevas**</label>
+			  	<input type="file" name="file" accept=".csv" onchange="cargarArchivo(this);">
+				<div class="text-center mt-3">
+		        	<input type="submit" value="Subir" class="btn btn-primary">
+				</div>
+			</form>
+		</div>
 		<h2>Agregar Materia</h2>
 		<form action="CrearMateriaServlet" method="post" style="margin-top:20px;">
 			<table>
 				<tr>
-					<td>Clave Materia:</td>
-					<td><input type="text" name="clave_materia" class="form-control" required /></td>
+					<td style="width:150px;">Clave Materia:</td>
+					<td style="width:350px;"><input type="text" name="clave_materia" class="form-control" required /></td>
 				</tr>
 				<tr>
 					<td>Nombre:</td>

@@ -52,7 +52,7 @@ public class CarreraDAO {
 		try {
 			Connection con = Conexion.getConnection();
 			PreparedStatement ps = con.prepareStatement("select carrera.*, turno.turno from carrera"
-					+ " inner join turno on carreara.id_turno = turno.id_turno where id_carrera = ?");
+					+ " inner join turno on carrera.id_turno = turno.id_turno where id_carrera = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Docentes - Tecnm</title>
+<title>Jefes de Carrera - Tecnm</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -24,10 +24,10 @@
 				String busqueda = request.getParameter("txtBuscar");
 				
 				if(busqueda != null){
-					List<UsuarioBean> list = UsuarioDAO.searchUsuario(busqueda); 
+					List<UsuarioBean> list = UsuarioDAO.searchUserJefe(busqueda); 
 					request.setAttribute("list",list);
 				}else{
-					List<UsuarioBean> list = UsuarioDAO.getAllUsuarios(); 
+					List<UsuarioBean> list = UsuarioDAO.getAllUserJefe(); 
 					request.setAttribute("list",list);
 				} 	
 		
@@ -36,7 +36,10 @@
 		<jsp:include page="menu.jsp" />
 		<br>
 		<div class='navbar'>
-			<h2>Docentes</h2>
+			<h2>Jefes de Carrera</h2>
+			<button class='btn btn-success' style='margin-right:10px;'>
+					<a style="text-decoration: none; color:white;" href="asignar_jefe.jsp">Asignar Jefe</a>
+			</button>
 	        <form class='form-inline' action='materias.jsp' method='get'> 
 	        	<input type='search' name='txtBuscar' class='form-control' style='margin-right:15px;' autocomplete="off"> 
 	        	<input type='submit' name='buscar' class='btn btn-outline-primary' value='Buscar'> 
@@ -48,21 +51,26 @@
 				<th>Clave Usuario</th>
 				<th>Nombre</th>
 				<th>Correo</th>
-				<th>Telefono</th>
 	            <th>Departamento</th>
+	            <th>Carrera</th>
+	            <th></th>
 	         </tr>
          </thead>
          <tbody>
          <c:if test="${list.size() == 0}">
-			<tr><td colspan='7'>No se encontraron docentes</td></tr>
+			<tr><td colspan='7'>No se encontraron jefes</td></tr>
 		</c:if>
 		<c:forEach var="usuario" items="${list}">
 			<tr>
 				<td>${usuario.getClave_usuario()}</td>
 				<td>${usuario.getNombre()} ${usuario.getPrimer_apellido()} ${usuario.getSegundo_apellido()}</td>
 				<td>${usuario.getCorreo()}</td>
-				<td>${usuario.getTelefono()}</td>
 				<td>${usuario.getNombre_departamento()}</td>
+				<td>${usuario.getNombre_carrera()}</td>
+				<td><button class='btn btn-warning' style='margin-right:10px;'>
+						<a style='text-decoration: none; color:white;' href="QuitarJefeServlet?id=${usuario.getId_jefe()}">Quitar Jefe</a>
+					</button>
+	             </td>
 			</tr>
 		</c:forEach>
 	</table>
