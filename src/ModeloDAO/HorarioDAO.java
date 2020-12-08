@@ -15,8 +15,8 @@ public class HorarioDAO {
 		int status = 0;
 		try {
 			Connection con = Conexion.getConnection();
-			String sql = "insert into horarios(id_usuario, id_materia, periodo, grupo, num_alumnos, aula, lunes,"
-					+ "martes, miercoles, jueves, viernes) values (?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO horario(id_usuario, id_materia, periodo, grupo, num_alumnos, aula, lunes,"
+					+ "martes, miercoles, jueves, viernes) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1,bean.getId_usuario());
 			ps.setInt(2, bean.getId_materia());
@@ -218,35 +218,34 @@ public class HorarioDAO {
 				h.setId_horario(rs.getInt(1));
 				h.setId_usuario(rs.getInt(2));
 				h.setId_materia(rs.getInt(3));
-				h.setId_carrera(rs.getInt(4));
-				h.setPeriodo(rs.getString(5));
-				h.setGrupo(rs.getString(6));
-				h.setNum_alumnos(rs.getInt(7));
-				h.setAula(rs.getString(8));
-				h.setLunes(rs.getString(9));
-				h.setMartes(rs.getString(10));
-				h.setMiercoles(rs.getString(11));
-				h.setJueves(rs.getString(12));
-				h.setViernes(rs.getString(13));
-				h.setNombre_usuario(rs.getString(14));
-				h.setPrefijo(rs.getString(15));
-				h.setPrimer_apellido(rs.getString(16));
+				h.setPeriodo(rs.getString(4));
+				h.setGrupo(rs.getString(5));
+				h.setNum_alumnos(rs.getInt(6));
+				h.setAula(rs.getString(7));
+				h.setLunes(rs.getString(8));
+				h.setMartes(rs.getString(9));
+				h.setMiercoles(rs.getString(10));
+				h.setJueves(rs.getString(11));
+				h.setViernes(rs.getString(12));
+				h.setNombre_usuario(rs.getString(13));
+				h.setPrefijo(rs.getString(14));
+				h.setPrimer_apellido(rs.getString(15));
 				
-				if(rs.getString(17) == null) {
+				if(rs.getString(16) == null) {
 					h.setSegundo_apellido("");
 				}else {
-					h.setSegundo_apellido(rs.getString(18));
+					h.setSegundo_apellido(rs.getString(16));
 				}
 				
-				h.setClave_materia(rs.getString(19));
-				h.setNombre_materia(rs.getString(20));
-				h.setSemestre(rs.getInt(21));
-				h.setHrs_t(rs.getInt(22));
-				h.setHrs_p(rs.getInt(23));
-				h.setCreditos(rs.getInt(24));
-				h.setClave_carrera(rs.getString(25));
-				h.setNombre_carrera(rs.getString(26));
-				h.setTurno(rs.getString(27));
+				h.setClave_materia(rs.getString(17));
+				h.setNombre_materia(rs.getString(18));
+				h.setSemestre(rs.getInt(19));
+				h.setHrs_t(rs.getInt(20));
+				h.setHrs_p(rs.getInt(21));
+				h.setCreditos(rs.getInt(22));
+				h.setClave_carrera(rs.getString(23));
+				h.setNombre_carrera(rs.getString(24));
+				h.setTurno(rs.getString(25));
 				
 			}
 		} catch (Exception ex) {
@@ -262,12 +261,12 @@ public class HorarioDAO {
 			Connection con = Conexion.getConnection();
 			String sql = "SELECT horario.*, usuario.nombre, usuario.prefijo, usuario.primer_apellido, usuario.segundo_apellido,"
 					+ " materia.clave_materia,materia.nombre, materia.semestre, materia.hrs_teoria, materia.hrs_practica, materia.creditos,"
-					+ "carrera.clave_carrera,carrera.nombre, turno.turno FROM horario "
-					+ "JOIN usuario ON usuario.id_usuario = horario.id_usuario "
-					+ "JOIN materia ON materia.id_materia = horario.id_materia "
-					+ "JOIN carrera ON carrera.id_carrera = materia.id_carrera "
-					+ "JOIN turno ON carrera.id_turno = turno.id_turno"
-					+ "WHERE horario.id_usuario = ? ORDER BY id_horario;";
+					+ " carrera.clave_carrera, carrera.nombre, turno.turno FROM horario "
+					+ " JOIN usuario ON usuario.id_usuario = horario.id_usuario "
+					+ " JOIN materia ON materia.id_materia = horario.id_materia "
+					+ " JOIN carrera ON carrera.id_carrera = materia.id_carrera "
+					+ " JOIN turno ON carrera.id_turno = turno.id_turno "
+					+ " WHERE horario.id_usuario = ? ORDER BY id_horario;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
@@ -276,35 +275,34 @@ public class HorarioDAO {
 				h.setId_horario(rs.getInt(1));
 				h.setId_usuario(rs.getInt(2));
 				h.setId_materia(rs.getInt(3));
-				h.setId_carrera(rs.getInt(4));
-				h.setPeriodo(rs.getString(5));
-				h.setGrupo(rs.getString(6));
-				h.setNum_alumnos(rs.getInt(7));
-				h.setAula(rs.getString(8));
-				h.setLunes(rs.getString(9));
-				h.setMartes(rs.getString(10));
-				h.setMiercoles(rs.getString(11));
-				h.setJueves(rs.getString(12));
-				h.setViernes(rs.getString(13));
-				h.setNombre_usuario(rs.getString(14));
-				h.setPrefijo(rs.getString(15));
-				h.setPrimer_apellido(rs.getString(16));
+				h.setPeriodo(rs.getString(4));
+				h.setGrupo(rs.getString(5));
+				h.setNum_alumnos(rs.getInt(6));
+				h.setAula(rs.getString(7));
+				h.setLunes(rs.getString(8));
+				h.setMartes(rs.getString(9));
+				h.setMiercoles(rs.getString(10));
+				h.setJueves(rs.getString(11));
+				h.setViernes(rs.getString(12));
+				h.setNombre_usuario(rs.getString(13));
+				h.setPrefijo(rs.getString(14));
+				h.setPrimer_apellido(rs.getString(15));
 				
-				if(rs.getString(17) == null) {
+				if(rs.getString(16) == null) {
 					h.setSegundo_apellido("");
 				}else {
-					h.setSegundo_apellido(rs.getString(17));
+					h.setSegundo_apellido(rs.getString(16));
 				}
 				
-				h.setClave_materia(rs.getString(18));
-				h.setNombre_materia(rs.getString(19));
-				h.setSemestre(rs.getInt(20));
-				h.setHrs_t(rs.getInt(21));
-				h.setHrs_p(rs.getInt(22));
-				h.setCreditos(rs.getInt(23));
-				h.setClave_carrera(rs.getString(24));
-				h.setNombre_carrera(rs.getString(25));
-				h.setTurno(rs.getString(26));
+				h.setClave_materia(rs.getString(17));
+				h.setNombre_materia(rs.getString(18));
+				h.setSemestre(rs.getInt(19));
+				h.setHrs_t(rs.getInt(20));
+				h.setHrs_p(rs.getInt(21));
+				h.setCreditos(rs.getInt(22));
+				h.setClave_carrera(rs.getString(23));
+				h.setNombre_carrera(rs.getString(24));
+				h.setTurno(rs.getString(25));
 		
 				list.add(h);
 			}
@@ -335,35 +333,34 @@ public class HorarioDAO {
 				h.setId_horario(rs.getInt(1));
 				h.setId_usuario(rs.getInt(2));
 				h.setId_materia(rs.getInt(3));
-				h.setId_carrera(rs.getInt(4));
-				h.setPeriodo(rs.getString(5));
-				h.setGrupo(rs.getString(6));
-				h.setNum_alumnos(rs.getInt(7));
-				h.setAula(rs.getString(8));
-				h.setLunes(rs.getString(9));
-				h.setMartes(rs.getString(10));
-				h.setMiercoles(rs.getString(11));
-				h.setJueves(rs.getString(12));
-				h.setViernes(rs.getString(13));
-				h.setNombre_usuario(rs.getString(14));
-				h.setPrefijo(rs.getString(15));
-				h.setPrimer_apellido(rs.getString(16));
+				h.setPeriodo(rs.getString(4));
+				h.setGrupo(rs.getString(5));
+				h.setNum_alumnos(rs.getInt(6));
+				h.setAula(rs.getString(7));
+				h.setLunes(rs.getString(8));
+				h.setMartes(rs.getString(9));
+				h.setMiercoles(rs.getString(10));
+				h.setJueves(rs.getString(11));
+				h.setViernes(rs.getString(12));
+				h.setNombre_usuario(rs.getString(13));
+				h.setPrefijo(rs.getString(14));
+				h.setPrimer_apellido(rs.getString(15));
 				
-				if(rs.getString(17) == null) {
+				if(rs.getString(16) == null) {
 					h.setSegundo_apellido("");
 				}else {
-					h.setSegundo_apellido(rs.getString(17));
+					h.setSegundo_apellido(rs.getString(16));
 				}
 				
-				h.setClave_materia(rs.getString(18));
-				h.setNombre_materia(rs.getString(19));
-				h.setSemestre(rs.getInt(20));
-				h.setHrs_t(rs.getInt(21));
-				h.setHrs_p(rs.getInt(22));
-				h.setCreditos(rs.getInt(23));
-				h.setClave_carrera(rs.getString(24));
-				h.setNombre_carrera(rs.getString(25));
-				h.setTurno(rs.getString(26));
+				h.setClave_materia(rs.getString(17));
+				h.setNombre_materia(rs.getString(18));
+				h.setSemestre(rs.getInt(19));
+				h.setHrs_t(rs.getInt(20));
+				h.setHrs_p(rs.getInt(21));
+				h.setCreditos(rs.getInt(22));
+				h.setClave_carrera(rs.getString(23));
+				h.setNombre_carrera(rs.getString(24));
+				h.setTurno(rs.getString(25));
 		
 				list.add(h);
 			}
@@ -397,35 +394,34 @@ public class HorarioDAO {
 				h.setId_horario(rs.getInt(1));
 				h.setId_usuario(rs.getInt(2));
 				h.setId_materia(rs.getInt(3));
-				h.setId_carrera(rs.getInt(4));
-				h.setPeriodo(rs.getString(5));
-				h.setGrupo(rs.getString(6));
-				h.setNum_alumnos(rs.getInt(7));
-				h.setAula(rs.getString(8));
-				h.setLunes(rs.getString(9));
-				h.setMartes(rs.getString(10));
-				h.setMiercoles(rs.getString(11));
-				h.setJueves(rs.getString(12));
-				h.setViernes(rs.getString(13));
-				h.setNombre_usuario(rs.getString(14));
-				h.setPrefijo(rs.getString(15));
-				h.setPrimer_apellido(rs.getString(16));
+				h.setPeriodo(rs.getString(4));
+				h.setGrupo(rs.getString(5));
+				h.setNum_alumnos(rs.getInt(6));
+				h.setAula(rs.getString(7));
+				h.setLunes(rs.getString(8));
+				h.setMartes(rs.getString(9));
+				h.setMiercoles(rs.getString(10));
+				h.setJueves(rs.getString(11));
+				h.setViernes(rs.getString(12));
+				h.setNombre_usuario(rs.getString(13));
+				h.setPrefijo(rs.getString(14));
+				h.setPrimer_apellido(rs.getString(15));
 				
-				if(rs.getString(17) == null) {
+				if(rs.getString(16) == null) {
 					h.setSegundo_apellido("");
 				}else {
-					h.setSegundo_apellido(rs.getString(17));
+					h.setSegundo_apellido(rs.getString(16));
 				}
 				
-				h.setClave_materia(rs.getString(18));
-				h.setNombre_materia(rs.getString(19));
-				h.setSemestre(rs.getInt(20));
-				h.setHrs_t(rs.getInt(21));
-				h.setHrs_p(rs.getInt(22));
-				h.setCreditos(rs.getInt(23));
-				h.setClave_carrera(rs.getString(24));
-				h.setNombre_carrera(rs.getString(25));
-				h.setTurno(rs.getString(26));
+				h.setClave_materia(rs.getString(17));
+				h.setNombre_materia(rs.getString(18));
+				h.setSemestre(rs.getInt(19));
+				h.setHrs_t(rs.getInt(20));
+				h.setHrs_p(rs.getInt(21));
+				h.setCreditos(rs.getInt(22));
+				h.setClave_carrera(rs.getString(23));
+				h.setNombre_carrera(rs.getString(24));
+				h.setTurno(rs.getString(25));
 		
 				list.add(h);
 			}

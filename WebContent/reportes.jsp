@@ -45,11 +45,13 @@
 		</div>
 		<div class='navbar'>
 			<form class='form-inline' action='reportes.jsp' method='get'> 
-	        	<span style="margin-right: 20px;">Ver reporte del Docente:</span><select name="id_usuario" class="form-control">
-							<c:forEach items="${list_usuario}" var="user">
-								<option value="${user.getId_usuario()}">${user.getPrefijo()} ${user.getNombre()} ${user.getPrimer_apellido()} ${user.getSegundo_apellido()}</option>
-							</c:forEach>
-						</select>
+	        	<span style="margin-right: 20px;">Ver reporte del Docente:</span>
+	        		<select name="id_usuario" class="form-control">
+	        			<option value="0" disabled selected>Selección</option>
+						<c:forEach items="${list_usuario}" var="user">
+							<option value="${user.getId_usuario()}">${user.getPrefijo()} ${user.getNombre()} ${user.getPrimer_apellido()} ${user.getSegundo_apellido()}</option>
+						</c:forEach>
+					</select>
 	        	<input type='submit' name='buscar' class='btn btn-primary' value='Buscar' style="margin-left: 20px;"> 
         	</form>
 	    </div>

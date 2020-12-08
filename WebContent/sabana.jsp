@@ -78,7 +78,7 @@
 		</c:if>
 		<c:forEach var="sabana" items="${list}">
 			<tr>
-				<td>${sabana.getClave_horario()}</td>
+				<td>${sabana.getId_horario()}</td>
 				<td>${sabana.getClave_materia()}</td>
 				<td>${sabana.getClave_carrera()}</td>
 				<td>${sabana.getNombre_materia()}</td>
@@ -100,7 +100,7 @@
 						<a style='text-decoration: none; color:white;' href="editar_horario.jsp?id=${sabana.getId_horario()}">Editar</a>
 					</button>
 	             	<button class='btn btn-danger'>
-	             		<a style='text-decoration: none; color:white;' href="delete_horario.jsp?id=${sabana.getId_horario()}">Eliminar</a>
+	             		<a style='text-decoration: none; color:white;' href="DeleteHorarioServlet?id=${sabana.getId_horario()}">Eliminar</a>
              		</button>
 	             </td>
 			</tr>

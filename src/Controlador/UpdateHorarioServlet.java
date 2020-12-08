@@ -16,25 +16,24 @@ import Modelo.HorarioBean;
 import ModeloDAO.HorarioDAO;
 
 /**
- * Servlet implementation class CrearHorarioServlet
+ * Servlet implementation class UpdateHorarioServlet
  */
-@WebServlet("/CrearHorarioServlet")
-public class CrearHorarioServlet extends HttpServlet {
+@WebServlet("/UpdateHorarioServlet")
+public class UpdateHorarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public CrearHorarioServlet() {
+    public UpdateHorarioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		int id_horario = Integer.parseInt(request.getParameter("id"));
 		int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
 		int id_materia = Integer.parseInt(request.getParameter("id_materia")); 
 	    String periodo = request.getParameter("periodo");
@@ -49,17 +48,20 @@ public class CrearHorarioServlet extends HttpServlet {
         
 		try {
 			Connection con = Conexion.getConnection();
-			String sql = "SELECT * FROM horario WHERE id_usuario = ? AND lunes = ? OR martes = ? OR miercoles = ? OR jueves = ? OR viernes = ?";
+			String sql = "SELECT horario.* FROM horario WHERE lunes = ? OR martes = ?"
+					+ " miercoles = ? OR jueves = ? OR viernes = ? AND id_usuario = ? AND id_horario != ? ";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, id_usuario);
-			ps.setString(2, lunes);
-			ps.setString(3, martes);
-			ps.setString(4, miercoles);
-			ps.setString(5, jueves);
-			ps.setString(6, viernes);
+			ps.setString(1, lunes);
+			ps.setString(2, martes);
+			ps.setString(3, miercoles);
+			ps.setString(4, jueves);
+			ps.setString(5, viernes);
+			ps.setInt(6, id_usuario);
+			ps.setInt(7, id_horario);
 			ResultSet rs = ps.executeQuery();
 			if (!rs.next()) {
 				HorarioBean h = new HorarioBean();
+				h.setId_horario(id_horario);
 	            h.setId_usuario(id_usuario);
 	            h.setId_materia(id_materia);
 	            h.setPeriodo(periodo);
@@ -72,12 +74,12 @@ public class CrearHorarioServlet extends HttpServlet {
 	            h.setJueves(jueves);
 	            h.setViernes(viernes);
 	            
-	            int status = HorarioDAO.save(h);  
+	            int status = HorarioDAO.update(h); 
 	            if(status>0){  
-	                out.print("<p style='color: green; font-weight: bold;'>¡Registro guardado con éxito!</p>");  
+	                out.print("<p style='color: green; font-weight: bold;'>¡Horario actualizado con éxito!</p>");  
 	                request.getRequestDispatcher("crear_horario.jsp").include(request, response);  
 	            }else{  
-	                out.println("<p style='color: red; font-weight: bold;'>Sorry! Registro no guardado!</p>"); 
+	                out.println("<p style='color: red; font-weight: bold;'>Sorry! Horario no actualizado!</p>"); 
 	                request.getRequestDispatcher("crear_horario.jsp").include(request, response); 
 	            }	
 				
