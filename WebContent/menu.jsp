@@ -23,7 +23,7 @@
 		<ul class='nav nav-tabs'>
 			<li class='nav-item'><a class='nav-link' href='index.jsp'>Inicio</a></li>
 			<%if (user != null && rol == 3) {%>
-				<li class="nav-item"><a class="nav-link" href="reporte_maestro.jsp">Reporte</a></li>
+				<li class="nav-item"><a class="nav-link" href="reporte_docente.jsp">Reporte</a></li>
 			<%}else if (user != null && rol == 2) {%>
 				<li class="nav-item"><a class="nav-link" href="materias.jsp">Materias</a></li>
 				<li class="nav-item"><a class="nav-link" href="sabana.jsp">Sabana de Materias</a></li>
