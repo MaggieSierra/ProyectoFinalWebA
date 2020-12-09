@@ -95,7 +95,7 @@ public class UsuarioDAO {
 			PreparedStatement ps = con.prepareStatement("SELECT  id_usuario, usuario.id_rol, usuario.id_departamento, clave_usuario, prefijo, nombre," + 
 					" primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo, nombre_departamento, nombre_rol FROM usuario"
 					+ " INNER JOIN departamento ON usuario.id_departamento = departamento.id_departamento "
-					+ " INNER JOIN rol ON usuario.id_rol = rol.id_rol");
+					+ " INNER JOIN rol ON usuario.id_rol = rol.id_rol WHERE rol.nombre_rol = 'Docente' OR rol.nombre_rol = 'Jefe Carrera'");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				UsuarioBean u = new UsuarioBean();
@@ -129,9 +129,10 @@ public class UsuarioDAO {
 			PreparedStatement ps = con.prepareStatement("SELECT  id_usuario, usuario.id_rol, usuario.id_departamento, clave_usuario, prefijo, nombre," + 
 					" primer_apellido, segundo_apellido, correo, telefono, hrs_trabajo, nombre_departamento, nombre_rol FROM usuario"
 					+ " INNER JOIN departamento ON usuario.id_departamento = departamento.id_departamento "
-					+ " INNER JOIN rol ON usuario.id_rol = rol.id_rol WHERE clave_usuario LIKE ? OR nombre LIKE ? ");
+					+ " INNER JOIN rol ON usuario.id_rol = rol.id_rol WHERE clave_usuario LIKE ? OR nombre LIKE ? OR nombre_departamento LIKE ? AND  (rol.nombre_rol = 'Docente' OR rol.nombre_rol = 'Jefe Carrera')");
 			ps.setString(1, "%"+texto+"%");
 			ps.setString(2, "%"+texto+"%");
+			ps.setString(3, "%"+texto+"%");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				UsuarioBean u = new UsuarioBean();

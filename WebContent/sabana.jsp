@@ -107,6 +107,9 @@
 		</c:forEach>
 	</table>
 	</div>
-	<%} }%>
+	<%} else{
+		%><h4>Elija la carrera con la que quiere trabajar en la página de inicio.</h4><%
+	}
+	}%>
 </body>
 </html>

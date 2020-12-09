@@ -35,7 +35,7 @@ java.util.*, java.sql.*, javax.servlet.http.HttpSession"%>
 		<jsp:include page="menu.jsp" />
 		<br>
 		<div class="col-12" style="text-align: center;">
-			<h5>INSTITUTO TECNOLOGICO DE LEON<br>DEPARTAMENTO DE SISTEMAS Y COMPUTACION<br>PROGRAMACION DE AGOSTO A DICIEMBRE DEL 2020</h5>
+			<h5>INSTITUTO TECNOLOGICO DE LEON<br>PROGRAMACION DE AGOSTO A DICIEMBRE DEL 2020</h5>
 		</div>
 	    <div class="table-responsive">
 		<table border='1' width='100%' class='table table-bordered'>

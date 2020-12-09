@@ -37,7 +37,7 @@
 		<br>
 		<div class='navbar'>
 			<h2>Docentes</h2>
-	        <form class='form-inline' action='materias.jsp' method='get'> 
+	        <form class='form-inline' action='docentes.jsp' method='get'> 
 	        	<input type='search' name='txtBuscar' class='form-control' style='margin-right:15px;' autocomplete="off"> 
 	        	<input type='submit' name='buscar' class='btn btn-outline-primary' value='Buscar'> 
 	        </form>

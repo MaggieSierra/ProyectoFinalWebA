@@ -43,7 +43,7 @@
 				
 				%>
 				<div class="row">
-					<div class="col-12">
+					<div class="col-12" style="display: flex; justify-content: center;">
 						<form action="index.jsp">
 							<h4>Elija la carrera con la que quiere trabajar:</h4>
 							<table>

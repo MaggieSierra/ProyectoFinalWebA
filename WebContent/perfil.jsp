@@ -27,28 +27,30 @@
 		<jsp:include page="menu.jsp" />
 		<br>
 		<div class="col-12" style="text-align: center;">
-			<h2>Perfil</h2>
+			<h2>Mi Perfil</h2>
 		</div>
-		<table class="table table-borderless" id="table_perfil">
+		<div class="col-12" style="display: flex; justify-content: center;">
+		<table class="table-striped" id="">
 			<tbody>
 				<tr>
-					<td style="max-width: 200px;">Nombre: </td>
+					<td style="width: 200px;"><strong>Nombre:</strong></td>
 					<td>${usuario.getNombre()} ${usuario.getPrimer_apellido()} ${usuario.getSegundo_apellido()}</td>
 				</tr>
 				<tr>
-					<td style="max-width: 200px;">Correo: </td>
+					<td style="width: 200px;"><strong>Correo:</strong></td>
 					<td>${usuario.getCorreo()} </td>
 				</tr>
 				<tr>
-					<td style="max-width: 200px;">Telefono: </td>
+					<td style="width: 200px;"><strong>Telefono:</strong></td>
 					<td>${usuario.getTelefono()}</td>
 				</tr>
 				<tr>
-					<td style="max-width: 200px;">Departamento: </td>
+					<td style="width: 200px;"><strong>Departamento:</strong></td>
 					<td>${departamento.getNombre_departamento()} </td>
 				</tr>
 			</tbody>
 		</table>
+		</div>
 	</div>
 	<%} %>
 </html>

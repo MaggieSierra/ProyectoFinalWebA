@@ -49,7 +49,18 @@
 	border:none;
 }
 
+a{
+	color: #304670;
+}
 
+.nav-tabs{
+	padding: 6px;
+	background: #304670;
+}
+
+.nav-tabs .nav-link{
+	color:white;
+}
 
 
 

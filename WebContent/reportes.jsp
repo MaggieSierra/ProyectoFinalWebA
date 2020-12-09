@@ -15,13 +15,16 @@
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
 			dispatcher.forward(request, response);
 		}else{
-		
+			String carrera_trabajar = (String) session.getAttribute("carrera_trabajar");
 			String user = (String)session_user.getAttribute("usuario");
 			int rol = (int)session_user.getAttribute("rol");
 			if(rol != 2){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 				dispatcher.forward(request, response);
-			}else{
+			}%><div class="container">
+			<jsp:include page="menu.jsp" />
+			<br><%
+			if(carrera_trabajar != "" && carrera_trabajar != null){
 				int busqueda = 0;
 				if(request.getParameter("id_usuario") != null){
 					busqueda = Integer.parseInt(request.getParameter("id_usuario"));
@@ -30,18 +33,15 @@
 					List<HorarioBean> list = HorarioDAO.getHorarioByIdUser(busqueda); 
 					request.setAttribute("usuario",usuario);
 					request.setAttribute("list",list);
-					
 				}	
 				
-				List<UsuarioBean> list_usuarios =  UsuarioDAO.getAllUsuarios();
+				List<UsuarioBean> list_usuarios =  UsuarioDAO.getAllUserByCarrera(carrera_trabajar);
 				request.setAttribute("list_usuario",list_usuarios);
-				request.setAttribute("busqueda",busqueda);
+				request.setAttribute("busqueda",busqueda); 	
+		
 	%>
-	<div class="container">
-		<jsp:include page="menu.jsp" />
-		<br>
 		<div class="col-12" style="text-align: center;">
-			<h5>INSTITUTO TECNOLOGICO DE LEON<br>DEPARTAMENTO DE SISTEMAS Y COMPUTACION<br>PROGRAMACION DE AGOSTO A DICIEMBRE DEL 2020</h5>
+			<h5>INSTITUTO TECNOLOGICO DE LEON<br>PROGRAMACION DE AGOSTO A DICIEMBRE DEL 2020</h5>
 		</div>
 		<div class='navbar'>
 			<form class='form-inline' action='reportes.jsp' method='get'> 
@@ -121,6 +121,9 @@
 	</table>
 	</div>
 	</div>  
-	<%} }%>
+	<%} else{
+		%><h4>Elija la carrera con la que quiere trabajar en la página de inicio.</h4><%
+	}
+	}%>
 </body>
 </html>
