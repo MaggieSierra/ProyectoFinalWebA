@@ -41,7 +41,7 @@
 			<button class='btn btn-success' style='margin-right:10px;'>
 					<a style="text-decoration: none; color:white;" href="crear_carrera.jsp">Nueva Carrera</a>
 			</button>
-	        <form class='form-inline' action='materias.jsp' method='get'> 
+	        <form class='form-inline' action='carreras.jsp' method='get'> 
 	        	<input type='search' name='txtBuscar' class='form-control' style='margin-right:15px;' autocomplete="off"> 
 	        	<input type='submit' name='buscar' class='btn btn-outline-primary' value='Buscar'> 
 	        </form>

@@ -99,23 +99,22 @@ public class HorarioDAO {
 				ps2.executeUpdate();
 			}
 			
-			sql = "update horario set id_usuario = ?, id_materia = ?, id_carrera = ?, clave_horario = ?, periodo = ?, "
+			sql = "update horario set id_usuario = ?, id_materia = ?, periodo = ?, "
 					+ "grupo = ?, num_alumnos = ?, aula = ?, lunes = ?, martes = ?, miercoles = ?, jueves = ?, viernes = ?"
 					+ " where id_horario = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1,h.getId_usuario());
 			ps.setInt(2, h.getId_materia());
-			ps.setInt(3, h.getId_carrera());
-			ps.setString(4, h.getPeriodo());
-			ps.setString(5,h.getGrupo());
-			ps.setInt(6,h.getNum_alumnos());
-			ps.setString(7,h.getAula());
-			ps.setString(8, h.getLunes());
-			ps.setString(9,h.getMartes());
-			ps.setString(10,h.getMiercoles());
-			ps.setString(11,h.getJueves());
-			ps.setString(12,h.getViernes());
-			ps.setInt(13,h.getId_horario());
+			ps.setString(3, h.getPeriodo());
+			ps.setString(4,h.getGrupo());
+			ps.setInt(5,h.getNum_alumnos());
+			ps.setString(6,h.getAula());
+			ps.setString(7, h.getLunes());
+			ps.setString(8,h.getMartes());
+			ps.setString(9,h.getMiercoles());
+			ps.setString(10,h.getJueves());
+			ps.setString(11,h.getViernes());
+			ps.setInt(12,h.getId_horario());
 
 			status = ps.executeUpdate();
 			
@@ -382,12 +381,13 @@ public class HorarioDAO {
 					+ "JOIN usuario ON usuario.id_usuario = horario.id_usuario "
 					+ "JOIN materia ON materia.id_materia = horario.id_materia "
 					+ "JOIN carrera ON carrera.id_carrera = materia.id_carrera "
-					+ "WHERE carrera.id_carrera = ? AND materia.clave_materia like ? OR materia.nombre like ? OR usuario.nombre like ? ORDER BY id_horario;";
+					+ " JOIN turno ON turno.id_turno = carrera.id_turno "
+					+ "WHERE materia.clave_materia like ? OR materia.nombre like ? OR usuario.nombre like ? AND carrera.id_carrera = ? ORDER BY id_horario;";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setString(1, "%"+texto+"%");
 			ps.setString(2, "%"+texto+"%");
 			ps.setString(3, "%"+texto+"%");
-			ps.setString(4, "%"+texto+"%");
+			ps.setInt(4, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				HorarioBean h = new HorarioBean();

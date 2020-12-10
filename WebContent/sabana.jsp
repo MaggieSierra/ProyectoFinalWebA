@@ -46,8 +46,6 @@
 	        	<input type='submit' name='buscar' class='btn btn-outline-primary' value='Buscar'> 
 	        </form>
 	    </div>
-	 </div>
-	 <div class="container-fluid">
 		<table border='1' width='100%' class='table'>  
 		<thead class='thead-dark'>
 			<tr>
@@ -62,13 +60,8 @@
 				<th><p class="verticalText">Grupo</p></th>
 				<th><p class="verticalText">Alumnos</p></th>
 				<th><p class="verticalText">Semestre</p></th>
-				<th><p class="verticalText">Creditos</p></th>
-				<th>Lunes</th>
-				<th>Martes</th>
-				<th>Miercoles</th>
-				<th>Jueves</th>
-				<th>Viernes</th>
-				<th>Aula</th>
+				<th></th>
+	            <th></th>
 	            <th></th>
 	         </tr>
          </thead>
@@ -89,20 +82,18 @@
 				<td>${sabana.getGrupo()}</td>
 				<td>${sabana.getNum_alumnos()}</td>
 				<td>${sabana.getSemestre()}</td>
-				<td>${sabana.getCreditos()}</td>
-				<td>${sabana.getLunes()}</td>
-				<td>${sabana.getMartes()}</td>
-				<td>${sabana.getMiercoles()}</td>
-				<td>${sabana.getJueves()}</td>
-				<td>${sabana.getViernes()}</td>
-				<td>${sabana.getAula()}</td>
-				<td><button class='btn btn-warning' style='margin-right:10px;'>
+				<td><button class='btn btn-primary' style='margin-right:10px;'>
+						<a style='text-decoration: none; color:white;' href="detalle_horario.jsp?id=${sabana.getId_horario()}">Ver</a>
+					</button></td>
+				<td>
+				<button class='btn btn-warning' style='margin-right:10px;'>
 						<a style='text-decoration: none; color:white;' href="editar_horario.jsp?id=${sabana.getId_horario()}">Editar</a>
 					</button>
-	             	<button class='btn btn-danger'>
-	             		<a style='text-decoration: none; color:white;' href="DeleteHorarioServlet?id=${sabana.getId_horario()}">Eliminar</a>
-             		</button>
+	             	
 	             </td>
+	             <td><button class='btn btn-danger'>
+	             		<a style='text-decoration: none; color:white;' href="DeleteHorarioServlet?id=${sabana.getId_horario()}">Eliminar</a>
+             		</button></td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -100,7 +100,7 @@ public class CarreraDAO {
 			Connection con = Conexion.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT carrera.*, turno.turno FROM carrera"
 					+ " INNER JOIN turno ON carrera.id_turno = turno.id_turno WHERE clave_carrera LIKE ?"
-					+ "OR nombre LIKE ? OR turno = ?");
+					+ "OR nombre LIKE ? OR turno LIKE ?");
 			ps.setString(1, "%"+texto+"%");
 			ps.setString(2, "%"+texto+"%");
 			ps.setString(3, "%"+texto+"%");

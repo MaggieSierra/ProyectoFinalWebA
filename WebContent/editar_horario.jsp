@@ -50,8 +50,8 @@ Modelo.MateriaBean,Modelo.UsuarioBean, Modelo.CarreraBean"%>
 			request.setAttribute("hora_materia_viernes", hora_materia_viernes);
 		%>
 	
-		<h2>Agregar Horario</h2>
-		<form action="CrearHorarioServlet" method="post" style="margin-top:20px;">
+		<h2>Editar Horario</h2>
+		<form action="UpdateHorarioServlet" method="post" style="margin-top:20px;">
 			<input type='hidden' name='id' class='form-control' required value='${horario.getId_horario()}'/>
 			<table>
 				<tr>

@@ -56,10 +56,10 @@ public class CrearCarreraServlet extends HttpServlet {
 	            int status = CarreraDAO.save(c);  
 	            if(status>0){  
 	                out.print("<p style='color: green; font-weight: bold;'>¡Registro guardado con éxito!</p>");  
-	                request.getRequestDispatcher("administrador/crear_carrera.jsp").include(request, response);  
+	                request.getRequestDispatcher("crear_carrera.jsp").include(request, response);  
 	            }else{  
 	                out.println("<p style='color: red; font-weight: bold;'>Sorry! Registro no guardado!</p>"); 
-	                request.getRequestDispatcher("administrador/crear_carrera.jsp").include(request, response); 
+	                request.getRequestDispatcher("crear_carrera.jsp").include(request, response); 
 	            }	
 			} 
 		}

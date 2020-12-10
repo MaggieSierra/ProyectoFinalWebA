@@ -33,6 +33,7 @@
 		<div class="col-12">
 			<form name="formFile" action="UploadServlet2" method="post" enctype="multipart/form-data">
 				<label class="text-danger">**Nota: Seleccione un archivo con extensión .csv para subir materias nuevas**</label>
+				<label class="text-danger">**se debe incluir: clave de la materia, nombre, semestre, horas te&oacute;ricas, horas pr&aacute;cticas y creditos**</label>
 				<table>
 					<tr><td><input type="file" name="file" accept=".csv"></td>
 						<td><input type="submit" value="Subir" class="btn btn-primary"></td>

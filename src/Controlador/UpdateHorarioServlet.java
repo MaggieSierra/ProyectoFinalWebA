@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,21 +46,47 @@ public class UpdateHorarioServlet extends HttpServlet {
 	    String miercoles = request.getParameter("miercoles");
 	    String jueves = request.getParameter("jueves");
 	    String viernes = request.getParameter("viernes");
+	    
+	    List<HorarioBean> horario = HorarioDAO.getHorarioByIdUser(id_usuario);
+		boolean empalman = false;
+		for (HorarioBean tempHorario: horario) {
+			
+			if(tempHorario.getId_horario() != id_horario) {
+				if (tempHorario.getLunes() != null && lunes != null && !tempHorario.getLunes().equals("") && !lunes.equals("")) {
+					if (tempHorario.getLunes().equals(lunes)) {
+						empalman = true;
+					}
+				}
+				
+				if (tempHorario.getMartes() != null && martes != null && !tempHorario.getMartes().equals("") && !martes.equals("")) {
+					if (tempHorario.getMartes().equals(martes)) {
+						empalman = true;
+					}
+				}
+				
+				if (tempHorario.getMiercoles() != null && miercoles != null && !tempHorario.getMiercoles().equals("") && !miercoles.equals("")) {
+					if (tempHorario.getMiercoles().equals(miercoles)) {
+						empalman = true;
+					}
+				}
+				
+				if ((tempHorario.getJueves() != null && jueves != null) && !tempHorario.getJueves().equals("") && !jueves.equals("")) {
+					if (tempHorario.getJueves().equals(jueves)) {
+						empalman = true;
+					}
+				}
+				
+				if (tempHorario.getViernes() != null && viernes != null && !tempHorario.getViernes().equals("") && !viernes.equals("")) {
+					if (tempHorario.getViernes().equals(viernes)) {
+						empalman = true;
+					}
+				}
+			}
+		}
         
 		try {
-			Connection con = Conexion.getConnection();
-			String sql = "SELECT horario.* FROM horario WHERE lunes = ? OR martes = ?"
-					+ " miercoles = ? OR jueves = ? OR viernes = ? AND id_usuario = ? AND id_horario != ? ";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, lunes);
-			ps.setString(2, martes);
-			ps.setString(3, miercoles);
-			ps.setString(4, jueves);
-			ps.setString(5, viernes);
-			ps.setInt(6, id_usuario);
-			ps.setInt(7, id_horario);
-			ResultSet rs = ps.executeQuery();
-			if (!rs.next()) {
+			
+			if (!empalman) {
 				HorarioBean h = new HorarioBean();
 				h.setId_horario(id_horario);
 	            h.setId_usuario(id_usuario);
@@ -77,15 +104,15 @@ public class UpdateHorarioServlet extends HttpServlet {
 	            int status = HorarioDAO.update(h); 
 	            if(status>0){  
 	                out.print("<p style='color: green; font-weight: bold;'>¡Horario actualizado con éxito!</p>");  
-	                request.getRequestDispatcher("crear_horario.jsp").include(request, response);  
+	                request.getRequestDispatcher("sabana.jsp").include(request, response);  
 	            }else{  
 	                out.println("<p style='color: red; font-weight: bold;'>Sorry! Horario no actualizado!</p>"); 
-	                request.getRequestDispatcher("crear_horario.jsp").include(request, response); 
+	                request.getRequestDispatcher("sabana.jsp").include(request, response); 
 	            }	
 				
 			}else {
 				out.println("<p style='color: red; font-weight: bold;'>El horario del docente se empalma</p>"); 
-                request.getRequestDispatcher("crear_horario.jsp").include(request, response); 
+                request.getRequestDispatcher("sabana.jsp").include(request, response); 
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

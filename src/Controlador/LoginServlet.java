@@ -48,9 +48,9 @@ public class LoginServlet extends HttpServlet {
 			session_user.setAttribute("nombre", us.getNombre());
 			session_user.setAttribute("apellido", us.getPrimer_apellido());
 			if(us.getSegundo_apellido() == null){
-				session_user.setAttribute("apellido","");
+				session_user.setAttribute("segundo_apellido","");
 			}else{
-				session_user.setAttribute("apellido",us.getSegundo_apellido());
+				session_user.setAttribute("segundo_apellido",us.getSegundo_apellido());
 			}
 			session_user.setAttribute("rol", us.getId_rol());
 			pagina = "/index.jsp";
