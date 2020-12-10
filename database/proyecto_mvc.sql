@@ -168,24 +168,24 @@ VALUES 	(1,'ISX','INGENIERÍA EN SISTEMAS COMPUTACIONALES'),
 	   	(2,'MCX','INGENIERÍA MECATRÓNICA'),
 	   	(2,'TIX','INGENIERÍA EN TECNOLOGÍAS DE LA INFORMACIÓN Y COMPUTACIÓN');
 		
-INSERT INTO usuario (id_rol, id_departamento, clave_usuario, prefijo, nombre, primer_apellido, segundo_apellido, usuario, contraseña, correo, telefono)
-VALUES (1, 2, 'A01', 'ING.', 'ANDRES', 'DIAZ', 'CARPIO', 'admin01', 'admin1234', 'admin01@leon.tecnm.mx', '4771234567'),
-		(1, 2, 'A02', 'ING.', 'MARGARITA', 'SIERRA', 'MUÑOZ', 'admin02', 'admin1234', 'admin02@leon.tecnm.mx', '4771234767'),
-		(2, 2, 'A03', 'ING.', 'ANTONIO', 'AGUILA', 'REYES','aaguila01', '123','antonio.aguila@leon.tecnm.mx', '4771234567'),
+INSERT INTO usuario (id_rol, id_departamento, clave_usuario, prefijo, nombre, primer_apellido, segundo_apellido, usuario, contraseña, correo, telefono, hrs_trabajo)
+VALUES (1, 2, 'A01', 'ING.', 'ANDRES', 'DIAZ', 'CARPIO', 'admin01', 'admin1234', 'admin01@leon.tecnm.mx', '4771234567', 0),
+		(1, 2, 'A02', 'ING.', 'MARGARITA', 'SIERRA', 'MUÑOZ', 'admin02', 'admin1234', 'admin02@leon.tecnm.mx', '4771234767', 0),
+		(2, 2, 'A03', 'ING.', 'ANTONIO', 'AGUILA', 'REYES','aaguila01', '123','antonio.aguila@leon.tecnm.mx', '4771234567', 0),
 		(3, 2, 'A06', 'ING.', 'EFRAIN', 'BERMUDEZ', 'GUADALUPE', 'ebermudez12', '123', 'efrain.bermudez@leon.tecnm.mx', '4771234566', 5),
-	  	(3, 2, 'A05', 'ING.', 'JOSÉ FERNANDO', 'HERNÁNDEZ', 'RODRÍGUEZ', 'jfhernandez01', '123', 'josef.hernandez@leon.tecnm.mx', '4771234569'),
-	  	(3, 2, 'A06', 'ING.', 'MARÍA MINERVA', 'SAUCEDO', 'TORRES ', 'mmsaucedo01', '123', 'mariam.saucedo@leon.tecnm.mx', '4771234567'),
-	 	(3, 2, 'A07', 'ING.', 'JOSE GERARDO', 'CARPIO', 'FLORES', 'jgcarpio01', '123', 'josec.carpio@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A08', 'ING.', 'LUIS EDUARDO', 'GUTIERREZ', 'AYALA', 'legutierrez01', '123', 'luis.guitierrez@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A09', 'ING.', 'RUTH', 'SAEZ DE NANCLARES', 'RODRIGUEZ', 'rsaez01', '123', 'ruth.saez@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A10', 'ING.', 'DENY', 'MARTINEZ', 'TREJO', 'dmartinez08', '123', 'correo@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A11', 'ING.', 'PAOLA VIRGINIA', 'GALVAN', 'JARAMILLO', 'pvgalvan01', '123', 'correo@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A12', 'ING.', 'JOSE ALEJANDRO', 'RODRIGUEZ', 'RENTERIA', 'jarodriguez01', '123', 'correo@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A13', 'LIC.', 'IRMA DE JESUS', 'RAMIREZ', 'ALVAREZ', 'iramirez01', '123', 'correo@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A14', 'ING.', 'ANA COLUMBA ZURITA', 'MARTINEZ', 'AGUILAR', 'aczmartinez02', '123', 'correo@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A15', 'ING.', 'JOSE ELIAS', 'MARTINEZ', 'ARIAS', 'jemartinez01', '123', 'correo@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A16', 'ING.', 'LAURA PATRICIA', 'GUEVARA', 'RANGEL', 'lpguevara14', '123', 'correo@leon.tecnm.mx', '4771234567'),
-		(3, 2, 'A17', 'LIC.', 'ROXANA NOEMI', 'MORENO', 'REAL', 'rnmoreno15', '123', 'correo@leon.tecnm.mx', '4771234567');
+	  	(3, 2, 'A05', 'ING.', 'JOSÉ FERNANDO', 'HERNÁNDEZ', 'RODRÍGUEZ', 'jfhernandez01', '123', 'josef.hernandez@leon.tecnm.mx', '4771234569', 0),
+	  	(3, 2, 'A06', 'ING.', 'MARÍA MINERVA', 'SAUCEDO', 'TORRES ', 'mmsaucedo01', '123', 'mariam.saucedo@leon.tecnm.mx', '4771234567', 0),
+	 	(3, 2, 'A07', 'ING.', 'JOSE GERARDO', 'CARPIO', 'FLORES', 'jgcarpio01', '123', 'josec.carpio@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A08', 'ING.', 'LUIS EDUARDO', 'GUTIERREZ', 'AYALA', 'legutierrez01', '123', 'luis.guitierrez@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A09', 'ING.', 'RUTH', 'SAEZ DE NANCLARES', 'RODRIGUEZ', 'rsaez01', '123', 'ruth.saez@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A10', 'ING.', 'DENY', 'MARTINEZ', 'TREJO', 'dmartinez08', '123', 'correo@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A11', 'ING.', 'PAOLA VIRGINIA', 'GALVAN', 'JARAMILLO', 'pvgalvan01', '123', 'correo@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A12', 'ING.', 'JOSE ALEJANDRO', 'RODRIGUEZ', 'RENTERIA', 'jarodriguez01', '123', 'correo@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A13', 'LIC.', 'IRMA DE JESUS', 'RAMIREZ', 'ALVAREZ', 'iramirez01', '123', 'correo@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A14', 'ING.', 'ANA COLUMBA ZURITA', 'MARTINEZ', 'AGUILAR', 'aczmartinez02', '123', 'correo@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A15', 'ING.', 'JOSE ELIAS', 'MARTINEZ', 'ARIAS', 'jemartinez01', '123', 'correo@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A16', 'ING.', 'LAURA PATRICIA', 'GUEVARA', 'RANGEL', 'lpguevara14', '123', 'correo@leon.tecnm.mx', '4771234567', 0),
+		(3, 2, 'A17', 'LIC.', 'ROXANA NOEMI', 'MORENO', 'REAL', 'rnmoreno15', '123', 'correo@leon.tecnm.mx', '4771234567', 0);
 	
 INSERT INTO jefe_carrera (id_usuario, id_carrera)
 VALUES (3, 1),(3, 8);

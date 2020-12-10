@@ -8,12 +8,11 @@ public class Conexion {
 	private static Connection connection;
 	
 	private Conexion() {
-		String db_url = "jdbc:mysql://localhost:3306/proyecto_tec_mvc?useSSL=false";
+		String db_url = "jdbc:mysql://db:3306/proyecto_tec_mvc";
         String db_driver = "com.mysql.cj.jdbc.Driver";
         String db_user = "root";
-        String db_password = "";
-        //String db_user = "root";
-        //String db_password = "root";
+        String db_password = "root";
+        
         try {
             Class.forName( db_driver );
             connection = DriverManager.getConnection( db_url, db_user, db_password );

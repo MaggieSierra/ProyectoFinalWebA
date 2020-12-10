@@ -25,7 +25,7 @@ El proyecto fue realizado utilizando el patrón MVC (Modelo - Vista - Controlado
 * [Instalación](#instalación-)
 * [Cómo correr con Docker](#cómo-correr-con-docker-)
 * [Credenciales de usuarios](#credenciales-de-usuarios-)
-* [Preview del proyecto](#preview-del-proyecto-)
+* [Vista Previa](#preview-del-proyecto-)
 * [¿Qué incluye el proyecto?](#qué-incluye-el-proyecto-)
 * [Notas](#notas-%EF%B8%8F)
 
