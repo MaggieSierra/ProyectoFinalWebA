@@ -33,7 +33,7 @@ El proyecto fue realizado utilizando el patrón MVC (Modelo - Vista - Controlado
 ### Inicio de sesión
 ![Inicio de sesión](img/inicio-de-sesion.png)
 ### Perfil
-![Perfil](img/perfil.png)
+![Perfil](img/perfil.PNG)
 ### Administrador
 #### Módulo de Carreras
 ![Carreras del Administrador](img/carreras.gif)
@@ -54,7 +54,7 @@ El proyecto fue realizado utilizando el patrón MVC (Modelo - Vista - Controlado
 ## Prerequisitos
 * Para crear este proyecto se utilizó el [IDE Eclipse para Desarrolladores Java Enterprise en su versión 2020-06 (4.16.0)](https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers).
 * Se utiliza como servidor web [Apache Tomcat 9.0](https://tomcat.apache.org/download-90.cgi).
-* Se utiliza [XAMPP](https://www.apachefriends.org/es/download.html) para levantar el servidor MySQL [tecnm_mvc](database/proyecto_mvc.sql).
+* Se utiliza [XAMPP](https://www.apachefriends.org/es/download.html) para levantar el servidor MySQL [proyecto_mvc](database/proyecto_mvc.sql).
 * Si quieres correr este proyecto con Docker y evitar descargar manualmente todo lo que se mencionó anteriormente, se necesita instalar [Docker](https://www.docker.com/products/docker-desktop) en la versión de tu preferencia y seguir los pasos en la sección de [Cómo correr con Docker](#cómo-correr-con-docker).
 
 ## Cómo clonar el proyecto
