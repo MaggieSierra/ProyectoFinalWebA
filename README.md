@@ -7,7 +7,7 @@ El Sistema de Gestión de Horarios permite administrar las clases que darán los
 El proyecto fue realizado utilizando el patrón MVC (Modelo - Vista - Controlador).
 
 ## Índice de Contenido
-* [Demo](#demo-)
+* [Demo](#demo)
     * [Inicio de sesión](#inicio-de-sesión)
     * [Perfil](#perfil)
     * [Administador](#administrador)
@@ -20,14 +20,13 @@ El proyecto fue realizado utilizando el patrón MVC (Modelo - Vista - Controlado
         * [Módulo de Reportes de Docentes](#módulo-de-reportes)
     * [Docente](#docente)
         * [Módulo de su Reporte](#módulo-de-reporte-docente)
-* [Prerequisitos](#prerequisitos-)
-* [Cómo clonar el proyecto](#cómo-clonar-el-proyecto-)
+* [Prerequisitos](#prerequisitos)
+* [Cómo clonar el proyecto](#cómo-clonar-el-proyecto)
 * [Instalación](#instalación-)
-* [Cómo correr con Docker](#cómo-correr-con-docker-)
-* [Credenciales de usuarios](#credenciales-de-usuarios-)
-* [Vista Previa](#preview-del-proyecto-)
-* [¿Qué incluye el proyecto?](#qué-incluye-el-proyecto-)
-* [Notas](#notas-%EF%B8%8F)
+* [Cómo correr con Docker](#cómo-correr-con-docker)
+* [Credenciales de usuarios](#credenciales-de-usuarios)
+* [Vista Previa](#vista-previa)
+* [Notas](#notas)
 
 ## Demo 
 ### Inicio de sesión
@@ -67,14 +66,15 @@ El proyecto fue realizado utilizando el patrón MVC (Modelo - Vista - Controlado
 ## Instalación
 1. Abre el proyecto clonado en un IDE.
 3. Tener [Apache Tomcat](#prerequisitos) como servidor web dentro del IDE.
-4. Tener encendido el servidor MySQL desde [XAMPP](#prerequisitos).
+4. Tener levantado el servidor MySQL desde [XAMPP](#prerequisitos).
 5. Dar clic derecho al nombre del proyecto en el IDE, clic en **Run as** y eliges la opción **Run on server**.
 
 ![Run Server](img/run-proyecto.gif)
 
 ## Cómo correr con Docker
-1. Para correr el proyecto con Docker, ejecuta el archivo [docker-compose.yml](docker-compose.yml) para levantar los contenedores y todo se instala automáticamente
-2. Ya puedes ver los dos contenedores de Apache Tomcat y MySQL corriendo. Ahora dirígete a la URL de la aplicación:
+Para correr el proyecto con Docker: 
+1. Ejecuta el archivo [docker-compose.yml](docker-compose.yml) para levantar los contenedores.
+2. Despues de que ver los dos contenedores de Apache Tomcat y MySQL corriendo dirígete a la URL de la aplicación:
     ```
     http://localhost:8080/ProyectoFinalWebA/
     ```
